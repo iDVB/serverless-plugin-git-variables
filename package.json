@@ -41,7 +41,10 @@
     "ci:coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
-    "babel-runtime": "6.23.0"
+    "babel-runtime": "6.23.0",
+    "install": "^0.12.2",
+    "nodegit": "^0.24.1",
+    "npm": "^6.9.0"
   },
   "devDependencies": {
     "ava": "0.20.0",

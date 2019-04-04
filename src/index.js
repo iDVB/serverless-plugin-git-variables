@@ -1,5 +1,6 @@
 // TODO: Consider using nodegit instead
 import childProcess from 'child_process'
+import Git from 'nodegit'
 
 const GIT_PREFIX = 'git'
 
@@ -60,7 +61,12 @@ export default class ServerlessGitVariables {
         value = await _exec('git rev-parse HEAD')
         break
       case 'branch':
-        value = await _exec('git rev-parse --abbrev-ref HEAD')
+        console.log('DVB')
+        value = await Git.Repository
+                        .open('.')
+                        .then(repo =>
+                          repo.getCurrentBranch()
+                            .then(ref => ref.shorthand()))
         break
       case 'message':
         value = await _exec('git log -1 --pretty=%B')
